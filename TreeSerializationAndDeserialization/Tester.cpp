@@ -105,7 +105,8 @@ void Tester::DeserializationTest()
   std::cout << std::endl;
   std::cout << "DeserializationTest - ";
   try {
-    Serializator ser("TestInputExample.txt");
+    Serializator ser;
+    ser.SetInputFile("TestInputExample.txt");
     Node *nodeResult = ser.Deserialize();
     ser.SetOutputFile("output.txt");
     ser.Serialize(*nodeResult);
@@ -123,7 +124,8 @@ void Tester::WrongTypeIdTest()
   std::cout << std::endl;
   std::cout << "WrongTypeIdTest - ";
   try {
-    Serializator ser("TestInputIncorrect.txt");
+    Serializator ser;
+    ser.SetInputFile("TestInputIncorrect.txt");
     Node *nodeResult = ser.Deserialize();
   }
   catch (std::exception& e) {
@@ -141,7 +143,8 @@ void Tester::NoFileForDeserializationTest()
   std::cout << std::endl;
   std::cout << "NoFileForDeserializationTest - ";
   try {
-    Serializator ser("NoSuchFile.txt");
+    Serializator ser;
+    ser.SetInputFile("NoSuchFile.txt");
     Node *nodeResult = ser.Deserialize();
   }
   catch (std::exception& e) {

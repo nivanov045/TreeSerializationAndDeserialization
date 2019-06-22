@@ -7,7 +7,6 @@ class Serializator
 {
 public:
   Serializator() = default;
-  Serializator(std::string iInputFileName) : _inputFileName(std::move(iInputFileName)) {}
   Serializator(std::string iInputFileName, std::string iOutputFileName) 
   : _inputFileName(std::move(iInputFileName))
   , _outputFileName(std::move(iOutputFileName)) {}
@@ -22,7 +21,7 @@ public:
   std::string _inputFileName;
   std::string _outputFileName;
   static void readNode(std::istream& iStream, Node*& oNode);
-  static void readNode(const std::string& iStream, Node*& oNode);
+  static void readNode(const std::string& iLine, Node*& oNode);
 
 };
 
