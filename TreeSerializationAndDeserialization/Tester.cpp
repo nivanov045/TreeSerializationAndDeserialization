@@ -1,7 +1,7 @@
+#include <iostream>
 #include "Tester.h"
 #include "Node.h"
 #include "Serializator.h"
-#include <iostream>
 
 void Tester::RunTests()
 {
@@ -15,8 +15,7 @@ void Tester::RunTests()
 
 void Tester::EmptyDeserializationFileTest()
 {
-  std::cout << std::endl;
-  std::cout << "EmptyDeserializationFileTest - ";
+  std::cout << std::endl << "EmptyDeserializationFileTest - ";
   try {
     Serializator ser;
     ser.SetInputFile("TestInputEmpty.txt");
@@ -34,8 +33,7 @@ void Tester::EmptyDeserializationFileTest()
 
 void Tester::SerializationAndDeserializationTest()
 {
-  std::cout << std::endl;
-  std::cout << "SerializationAndDeserializationTest - ";
+  std::cout << std::endl << "SerializationAndDeserializationTest - ";
   IntNode* rootNode = new IntNode(8);
   StringNode* bar = new StringNode("bar");
   StringNode* bar2 = new StringNode("bar2");
@@ -70,8 +68,7 @@ void Tester::SerializationAndDeserializationTest()
 
 void Tester::SerializationTest()
 {
-  std::cout << std::endl;
-  std::cout << "SerializationTest - ";
+  std::cout << std::endl << "SerializationTest - ";
   IntNode* rootNode = new IntNode(8);
   StringNode* bar = new StringNode("bar");
   StringNode* bar2 = new StringNode("bar2");
@@ -102,8 +99,7 @@ void Tester::SerializationTest()
 
 void Tester::DeserializationTest()
 {
-  std::cout << std::endl;
-  std::cout << "DeserializationTest - ";
+  std::cout << std::endl << "DeserializationTest - ";
   try {
     Serializator ser;
     ser.SetInputFile("TestInputExample.txt");
@@ -121,8 +117,7 @@ void Tester::DeserializationTest()
 
 void Tester::WrongTypeIdTest()
 {
-  std::cout << std::endl;
-  std::cout << "WrongTypeIdTest - ";
+  std::cout << std::endl << "WrongTypeIdTest - ";
   try {
     Serializator ser;
     ser.SetInputFile("TestInputIncorrect.txt");
@@ -132,16 +127,15 @@ void Tester::WrongTypeIdTest()
     if (!strcmp(e.what(), "Unknown typeId in input!"))
       std::cout << "Ok";
     else
-      std::cout << "Wrong";
+      std::cout << "Wrong exception";
     return;
   }
-  std::cout << "Wrong";
+  std::cout << "Wrong - no exception";
 }
 
 void Tester::NoFileForDeserializationTest()
 {
-  std::cout << std::endl;
-  std::cout << "NoFileForDeserializationTest - ";
+  std::cout << std::endl << "NoFileForDeserializationTest - ";
   try {
     Serializator ser;
     ser.SetInputFile("NoSuchFile.txt");
@@ -151,9 +145,9 @@ void Tester::NoFileForDeserializationTest()
     if (!strcmp(e.what(), "No file for input!"))
       std::cout << "Ok";
     else
-      std::cout << "Wrong";
+      std::cout << "Wrong exception";
     return;
   }
-  std::cout << "Wrong";
+  std::cout << "Wrong - no exception";
 
 }

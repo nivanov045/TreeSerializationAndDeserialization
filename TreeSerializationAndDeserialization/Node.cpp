@@ -1,6 +1,6 @@
-#include "Node.h"
 #include <sstream>
 #include <iomanip>
+#include "Node.h"
 
 std::string Node::Serialize() const
 {

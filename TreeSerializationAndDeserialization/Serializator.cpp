@@ -1,6 +1,6 @@
-#include "Serializator.h"
 #include <fstream>
 #include <sstream>
+#include "Serializator.h"
 
 void Serializator::Serialize(const Node& iNode) const
 {
