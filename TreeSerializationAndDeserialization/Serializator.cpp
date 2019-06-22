@@ -17,7 +17,8 @@ Node* Serializator::Deserialize() const
     throw std::runtime_error("No file for input!");
   Node* rootNode = nullptr;
   std::string line;
-  getline(input, line);
+  if(!getline(input, line))
+    throw std::runtime_error("Empty file for deserialization!");
   readNode(line, rootNode);
   Node* currentNode = rootNode;
   bool stepInto = false;
