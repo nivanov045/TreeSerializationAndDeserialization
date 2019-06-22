@@ -5,21 +5,21 @@
 std::string Node::Serialize() const
 {
   std::stringstream result;
-  for (size_t i = 0; i < numOfTabs; ++i)
+  for (size_t i = 0; i < _numOfTabs; ++i)
     result << "  ";
   result << GetNodeTypeString() << ' ' << GetNodeAsString();
   if (!_children.empty()) {
-    result << ':' << std::endl;
-    for (size_t i = 0; i < numOfTabs; ++i)
+    result << std::endl;
+    for (size_t i = 0; i < _numOfTabs; ++i)
       result << "  ";
     result << '{' << std::endl;
     for (const auto& c : _children)
       result << c->Serialize();
-    for (size_t i = 0; i < numOfTabs; ++i)
+    for (size_t i = 0; i < _numOfTabs; ++i)
       result << "  ";
     result << "}";
   } 
-  result << ',' << std::endl;
+  result << std::endl;
   return result.str();
 }
 

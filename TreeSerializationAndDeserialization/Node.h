@@ -9,17 +9,20 @@ public:
   virtual ~Node() = default;
   void AddNode(Node* iNode)
   {
-    iNode->numOfTabs = numOfTabs + 1;
+    iNode->_numOfTabs = _numOfTabs + 1;
+    iNode->_father = this;
     _children.push_back(iNode);
   }
 
   virtual std::string GetNodeAsString() const = 0;
   virtual std::string GetNodeTypeString() const = 0;
   std::string Serialize() const;
+  Node* GetFather() const { return _father; }
 
 protected:
   std::vector<Node*> _children;
-  size_t numOfTabs = 0;
+  Node* _father = nullptr;
+  size_t _numOfTabs = 0;
 };
 
 class StringNode : public Node
@@ -43,7 +46,7 @@ public:
 
 private:
   double _data;
-  size_t _serializePrecision = 8;
+  size_t _serializePrecision = 5;
 };
 
 class IntNode : public Node

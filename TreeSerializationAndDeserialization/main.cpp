@@ -4,13 +4,32 @@
 
 int main(int argc, char* argv[])
 {
-  StringNode node("node_0");
-  DoubleNode node1(1.2);
-  node.AddNode(&node1);
-  node.AddNode(new DoubleNode(1.3));
-  node1.AddNode(new IntNode(144));
-  //std::cout << node.Serialize();
-  Serializator ser("input.txt", "output.txt");
-  ser.Serialize(node);
-  //system("pause");
+  IntNode* rootNode = new IntNode(8);
+  StringNode* bar = new StringNode("bar");
+  StringNode* bar2 = new StringNode("bar2");
+  rootNode->AddNode(bar);
+  rootNode->AddNode(bar2);
+  DoubleNode* twoD = new DoubleNode(2.019);
+  bar->AddNode(twoD);
+  bar->AddNode(new IntNode(2019));
+  bar->AddNode(new StringNode("2019"));
+  twoD->AddNode(new IntNode(9));
+  bar2->AddNode(new StringNode("foo"));
+  DoubleNode* sixD = new DoubleNode(6.28318);
+  bar2->AddNode(sixD);
+  sixD->AddNode(new StringNode("hello"));
+  
+  try {
+    Serializator ser;
+    ser.SetOutputFile("input.txt");
+    ser.Serialize(*rootNode);
+    ser.SetInputFile("input.txt");
+    Node *nodeResult = ser.Deserialize();
+    ser.SetOutputFile("output.txt");
+    ser.Serialize(*nodeResult);
+  } catch (...) {
+    system("pause");
+    return 1;
+  }
+  return 0;
 }
